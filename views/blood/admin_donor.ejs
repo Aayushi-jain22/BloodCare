@@ -1,0 +1,42 @@
+<%- include("adminbase.ejs") -%>
+<!-- {% block content %}
+{% load widget_tweaks %} -->
+<%- include("header.ejs") -%>
+<br><br>
+<div class="container" style="margin-left: 215px">
+    <H4 class="text-center">DONOR DETAILS</H4><br>
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-info">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Profile</th>
+                <th scope="col">Blood Group</th>
+                <th scope="col">Address</th>
+                <th scope="col">Mobile</th>
+                <th class="text-right">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (donor.length!=0) { %>
+            <% var i = 1; %>
+            <% donor.forEach(function(data) { %>
+            <tr>
+                <td><%= data.first_name + " " + data.last_name %></td>
+                <td><img src="<%= data.profile_pic %>" alt="Profile Pic" height="40px" width="40px" /></td>
+                <td><%= data.blood_group %></td>
+                <td><%= data.address %></td>
+                <td><%= data.mobile %></td>
+                
+                <td class="text-right">
+                    <button class="btn btn-primary badge-pill" style="width: 80px; padding:0px 15px""><a  style="text-decoration: none;color: white;" href="<%= 'update-donor/' + data.id  %>">EDIT</a> </button>
+                    <button class="btn btn-danger badge-pill" style="width: 80px; padding:0px 10px""><a  style="text-decoration: none;color: white;" href="<%= 'delete-donor/' + data.id  %>">DELETE</a> </button>
+                </td>
+            </tr>
+            <% i++;}) %>
+            <% } %>
+
+
+        </tbody>
+    
+    </table>
+</div>

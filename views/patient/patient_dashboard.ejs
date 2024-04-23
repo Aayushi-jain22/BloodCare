@@ -1,0 +1,72 @@
+<%- include("patientbase.ejs") -%>
+<%- include("../blood/header.ejs") -%>
+<head>
+    <style>
+      .xyz{     
+        color: blue; 
+        font-size: 3ex;   
+      }
+    </style>
+</head>
+<br><br>
+<div class="container"  style="margin-left:215px;">
+
+ 
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="card bg-light">
+          <div class="card-body">
+              <div class="blood">
+                <i class="fas fa-sync-alt xyz"></i>
+              </div><br>
+              <div>
+                Request Made <br>
+                  <%= request_made %>
+              </div>                            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="blood">
+                  <i class="fas fa-sync xyz"></i>
+                </div><br>
+                <div>
+                    Pending Request <br>
+                    <%= pending_request %>
+                </div>                            
+            </div>
+          </div>
+      </div>
+
+      <div class="col-sm-3">
+          <div class="card bg-light">
+              <div class="card-body">
+                  <div class="blood">
+                    <i class="fas fa-check-circle xyz"></i>
+                  </div><br>
+                  <div>
+                       Approved Request<br>
+                      <%= approved_request %>
+                  </div>                            
+              </div>
+            </div>
+      </div>
+      <div class="col-sm-3">
+          <div class="card bg-light">
+              <div class="card-body">
+                  <div class="blood">
+                    <i class="fas fa-times-circle xyz"></i>
+                  </div><br>
+                  <div>
+                       Rejected Request <br>
+                      <%= rejected_request %>
+                  </div>                            
+              </div>
+            </div>
+        </div>
+
+    </div>
+</div>

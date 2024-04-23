@@ -1,0 +1,69 @@
+<%- include("donorbase.ejs") -%>
+<!-- {% block content %}
+{% load widget_tweaks %} -->
+<%- include("../blood/header.ejs") -%>
+<head>
+    <style>
+        .label {
+            color: white;
+            padding: 8px;
+        }
+   
+       .success {background-color: #4CAF50;} /* Green */
+       .info {background-color: #2196F3;} /* Blue */
+       .warning {background-color: #ff9800;} /* Orange */
+       .danger {background-color: #f44336;} /* Red */
+       .other {background-color: #e7e7e7; color: black;} /* Gray */
+    </style>
+</head>
+<br><br>
+<div class="container" style="margin-left: 215px">
+    <H4 class="text-center">My Donation History</H4><br>
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-info">
+            <tr>
+                <th scope="col">Donor Age</th>
+                <th scope="col">Disease (if any)</th>
+                <th scope="col">Blood Group</th>
+                <th scope="col">Unit</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <% if (donation.length!=0) { %>
+            <% var i = 1; %>
+            <% donation.forEach(function(data) { %>
+            <tr>
+                
+                
+                <td><%= data.age %></td>
+                <td><%= data.disease %></td>
+                
+                <td><%= data.blood_group %></td>
+                <td><%= data.unit %></td>
+                <td><%= data.date %></td>
+                <% if (data.status === 'Approved') { %>
+                <td>
+                    <span class="label success"> Approved</span>
+                    <button class="label info"><a  style="color: white;" href="<%= 'certificate/' + data.first_name + " " + data.last_name + "/" + data.date  %>">Certificate</a> </button>
+                </td>
+                
+                <% }else if (data.status === 'Rejected') { %>
+                <td>
+                    <span class="label danger">Rejected</span>
+                </td>
+                <% } else { %>
+                <td><span style="color: white;margin-left: 0px;" class="label info">Pending</span></td>
+                <% } %>
+                
+
+            </tr>
+            <% i++;}) %>
+            <% } %>
+
+        </tbody>
+    
+    </table>
+</div>

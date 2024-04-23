@@ -1,0 +1,115 @@
+<html>
+
+    <head>
+          <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+    <!-- css stylesheet -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="css/styles.css">
+      <!-- Font Awesome -->
+      <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- bootstrap strips -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <style type='text/css'>
+
+            body, html {
+                margin: 05px;
+                padding: 50px;
+                margin-left: 100;
+            }
+            body {
+
+                color: black;
+                display: table;
+                font-family: Georgia, serif;
+                font-size: 24px;
+                text-align: center;
+            }
+            .bt{
+              position:absolute;
+               top: 10px;
+               right:0;
+               padding: inherit;
+
+            }
+            .container {
+                border: 20px solid red;
+
+                width: 750px;
+                height: 563px;
+                 padding: 10px;
+                display: table-cell;
+                vertical-align: middle;
+            }
+            .logo {
+                color: tan;
+            }
+
+            .marquee {
+                color: red ;
+                font-size: 48px;
+                margin: 20px;
+            }
+            .assignment {
+                margin: 20px;
+            }
+            .person {
+                border-bottom: 2px solid black;
+                font-size: 32px;
+                font-style: italic;
+                margin: 20px auto;
+                width: 400px;
+            }
+            .reason {
+                margin: 20px;
+            }
+
+
+        </style>
+    </head>
+    <div class="bt">
+      <button  type="button" class="btn btn-primary" onclick="window.print()">Print </button>
+
+    </div>
+    <body>
+        <div class="container">
+            <div class="logo">
+                An Organization
+            </div>
+
+            <div class="marquee">
+                Certificate of Appreciation
+            </div>
+
+            <div class="assignment">
+                This certificate is presented to
+            </div>
+
+            <div class="person">
+              <%= Name %>
+            </div>
+
+            <div class="reason">
+                For donating blood in blood care web application.<br/>
+
+    <br>
+    <p class="smaller" id='cert-issued'>
+     <b>Issued on:</b> <%= Date %>.
+    </p>
+
+    <div id="cert-footer">
+      <div id="cert-issued-by">
+        <img id="cert-stamp"
+          <hr>
+        <p>Issued by<br>The Blood Care</p>
+      </div
+            </div>
+        </div>
+    </body>
+
+</html>

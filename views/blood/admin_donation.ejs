@@ -1,0 +1,64 @@
+<%- include("adminbase.ejs") -%>
+<!-- {% block content %}
+{% load widget_tweaks %} -->
+<%- include("header.ejs") -%>
+<head>
+    <style>
+        .label {
+            color: white;
+            padding: 8px;
+        }
+   
+       .success {background-color: #4CAF50;} /* Green */
+       .info {background-color: #2196F3;} /* Blue */
+       .warning {background-color: #ff9800;} /* Orange */
+       .danger {background-color: #f44336;} /* Red */
+       .other {background-color: #e7e7e7; color: black;} /* Gray */
+
+    </style>
+</head>
+<br><br>
+<div class="container" style="margin-left: 215px">
+    <H4 class="text-center">BLOOD DONATION DETAILS</H4><br>
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-info">
+            <tr>
+                <th scope="col">Donor Name</th>
+                <th scope="col">Disease</th>
+                <th scope="col">Age</th>
+                <th scope="col">Blood Group</th>
+                <th scope="col">Unit</th>
+                <th scope="col">Request Date</th>
+                <th class="text-right">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (donation.length!=0) { %>
+            <% var i = 1; %>
+            <% donation.forEach(function(data) { %>
+            <tr>
+                <td><%= data.first_name + " " + data.last_name %></td>
+                <td><%= data.disease %></td>
+                <td><%= data.age %></td>
+                <td><%= data.blood_group %></td>
+                <td><%= data.unit %></td>
+                <td><%= data.date %></td>
+                <% if (data.status === 'Pending') { %>
+                <td class="text-right">
+                    <button class="btn btn-primary badge-pill" style="width: 165px;"><a  style="text-decoration: none;color: white;" href="<%= 'approve-donation/' + data.donor +"/"+ data.blood_group +"/"+ data.unit %>">APPROVE</a> </button>
+                    <button class="btn btn-danger badge-pill" style="width: 165px;"><a  style="text-decoration: none;color: white;" href="<%= 'reject-donation/' + data.donor  %>">REJECT</a> </button>
+                </td>
+                <% } else if  (data.status === 'Approved') { %>
+                <td><span class="label warning"><%= data.unit %> Unit Added To Stock</span></td>
+
+                <% } else { %>
+                <td><span class="label danger">0 Unit Added To Stock</span></td> 
+                <% } %>
+            </tr>
+            <% i++;}) %>
+            <% } %>
+
+        </tbody>
+    
+    </table>
+</div>

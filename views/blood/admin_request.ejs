@@ -1,0 +1,70 @@
+<%- include("adminbase.ejs") -%>
+<!-- {% block content %}
+{% load widget_tweaks %} -->
+<%- include("header.ejs") -%>
+<br><br>
+<div class="container" style="margin-left: 215px">
+    <% if (request) { %>
+    <H4 class="text-center">Blood Requested</H4><br>
+    <% if (message) { %>
+   <h5 class="text-center" style="color: red;"> <%= message %></h5><br>
+<% } else { %>
+
+<% } %>
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-info">
+            <tr>
+                <th scope="col">Patient Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Reason</th>
+                <th scope="col">Blood Group</th>
+                <th scope="col">Unit (in ml)</th>
+                <th scope="col">Date</th>
+                <th scope="col">Hospital Name</th>
+                <th scope="col">Hospital Number</th>
+                <th class="text-right">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (request.length!=0) { %>
+            <% var i = 1; %>
+            <% request.forEach(function(data) { %>
+            <tr>
+                <td><%= data.patient_name %></td>
+                <td><%= data.patient_age %></td>
+                <td><%= data.reason %></td>
+                <td><%= data.blood_group %></td>
+                <td><%= data.unit %></td>
+                <td><%= data.date %></td>
+                <td><%= data.hospital_name %></td>
+                <td><%= data.hospital_no %></td>
+                <td class="text-right">
+                   
+                    <button class="btn btn-primary badge-pill" style="width: 100px; padding-left:15px; padding-right:15px;"><a  style="text-decoration: none;color: white;" href=
+                        <% if(data.request_by_patient) { %>
+                        <%= '/update-approve-status/' + data.request_by_patient +"/"+ data.blood_group +"/"+ data.unit %>
+                        <% } else { %>
+                        <%= '/update-approve-status/' + data.request_by_donor +"/"+ data.blood_group +"/"+ data.unit %>
+                        <% } %> 
+                    >Approve</a> </button>
+                    <button class="btn btn-danger badge-pill" style="width: 100px; padding-left:15px; padding-right:15px;"><a  style="text-decoration: none;color: white;" href=
+                        <% if(data.request_by_patient) { %>
+                        <%= '/update-reject-status/' + data.request_by_patient %>
+                        <% } else { %>
+                        <%= '/update-reject-status/' + data.request_by_donor %>
+                        <% } %> 
+                    >Reject</a> </button>
+                    
+                </td>
+            </tr>
+            <% i++;}) %>
+            <% } %>
+
+        </tbody>
+    
+    </table>
+<% } else { %>
+<h5>No Blood Request By Patient / Donor !</h5>
+<% } %>
+
+</div>

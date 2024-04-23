@@ -1,0 +1,36 @@
+<%- include("adminbase.ejs") -%>
+<%- include("header.ejs") -%>
+<br><br>
+<div class="container" style="margin-left: 215px">
+    <H4 class="text-center">BEST DONOR DETAILS</H4><br>
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-info">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Profile</th>
+                <th scope="col">Blood Group</th>
+                <th scope="col">Address</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (donor.length!=0) { %>
+            <% var i = 1; %>
+            <% donor.forEach(function(data) { %>
+            <tr>
+                <td><%= data.first_name + " " + data.last_name %></td>
+                <td><img src="<%= data.profile_pic %>" alt="Profile Pic" height="40px" width="40px" /></td>
+                <td><%= data.blood_group %></td>
+                <td><%= data.address %></td>
+                <td><%= data.mobile %></td>
+                <td><%= data.count %></td>
+            </tr>
+            <% i++;}) %>
+            <% } %>
+
+
+        </tbody>
+    
+    </table>
+</div>
